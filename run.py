@@ -24,7 +24,7 @@ with sync_playwright() as playwright:
 	context = browser.new_context(storage_state="session.json" if 'session.json' in os.listdir('.') else None)
 
 	page = context.new_page()
-	page.goto('https://www.scribd.com/login', wait_until='domcontentloaded')
+	page.goto('https://www.everand.com/login', wait_until='domcontentloaded')
 
 	page.locator("div.user_row").wait_for(state='attached', timeout=0)
 
@@ -101,7 +101,7 @@ with sync_playwright() as playwright:
 			html = page_elem.inner_html()
 
 			# replace img urls
-			html = html.replace('src="/', 'src="https://www.scribd.com/')
+			html = html.replace('src="/', 'src="https://www.everand.com/')
 
 			# set page size
 			match = re.findall('width: ([0-9.]+)px; height: ([0-9.]+)px;', html)[0]
